@@ -1,3 +1,5 @@
+# Created by github
+
 # Logs
 logs
 *.log
@@ -102,3 +104,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+# End created by github
+
+.idea/*

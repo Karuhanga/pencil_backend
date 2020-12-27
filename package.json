@@ -1,0 +1,26 @@
+{
+  "name": "pencil_backend",
+  "version": "1.0.0",
+  "description": "Annotated topic search API.",
+  "scripts": {
+    "dev": "pm2 -i 0 --max-restarts 0 start --watch . ./app.js",
+    "start": "pm2 start ./app.js",
+    "stop": "pm2 stop ./app.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Karuhanga/pencil_backend.git"
+  },
+  "author": "Lincoln Karuhanga",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Karuhanga/pencil_backend/issues"
+  },
+  "homepage": "https://github.com/Karuhanga/pencil_backend#readme",
+  "dependencies": {
+    "dotenv-safe": "^8.2.0",
+    "express": "^4.17.1",
+    "pm2": "^4.5.1"
+  }
+}
