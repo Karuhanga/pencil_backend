@@ -14,7 +14,11 @@ app.get('/search', function (req, res) {
 
     findQuestionIdsUnderTopic(topic, page, perPage)
         .then(data => res.json({data, page, perPage}));
-})
+});
+
+app.get('*', function(req, res){
+    res.redirect("/search");
+});
 
 app.listen(config.API_PORT, function () {
     console.info(`App listening on port ${config.API_PORT}!`);
