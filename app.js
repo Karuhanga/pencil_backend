@@ -12,6 +12,13 @@ app.get('/topics', function (req, res) {
     controllers.findTopics(page, perPage).then(data => res.json({data, page, perPage}));
 });
 
+app.get('/questions', function (req, res) {
+    const page = +req.query.page || 1;
+    const perPage = +req.query.perPage || 10;
+
+    controllers.findQuestions(page, perPage).then(data => res.json({data, page, perPage}));
+});
+
 app.get('/search', function (req, res) {
     const topic = req.query.q;
     const page = +req.query.page || 1;

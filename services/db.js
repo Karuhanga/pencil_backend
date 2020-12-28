@@ -4,19 +4,20 @@ const assert = require('assert');
 const config = require('../config');
 
 const TOPIC_COLLECTION = "topics";
+const QUESTION_COLLECTION = "questions";
 
-function connectToCollection(collectionName, dbCollectionClientConsumer) {
+function connectToDB(dbClientConsumer) {
     MongoClient.connect(config.DB_URL, function(err, client) {
         assert.equal(null, err);
 
         const db = client.db(config.DB_NAME);
-        const collection = db.collection(collectionName);
 
-        dbCollectionClientConsumer(collection).finally(() => client.close());
+        dbClientConsumer(db).finally(() => client.close());
     });
 }
 
 module.exports = {
-    connectToCollection,
+    connectToDB,
     TOPIC_COLLECTION,
+    QUESTION_COLLECTION,
 }

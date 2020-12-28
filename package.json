@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node -r ./config ./app.js",
     "load-topics": "node -r ./config ./tools/load-topics.js",
+    "load-questions": "node -r ./config ./tools/load-questions.js",
     "test": "test"
   },
   "repository": {

@@ -7,9 +7,17 @@ function findQuestionIdsUnderTopic(topic, page, perPage) {
     return Promise.resolve([1, 2]);
 }
 
+function findQuestions(page, perPage) {
+    return new Promise(((resolve, reject) => {
+        db.connectToDB(dbClient => {
+            return model.findQuestions((page - 1)*perPage, perPage, dbClient).then(resolve).catch(reject);
+        });
+    }));
+}
+
 function findTopics(page, perPage) {
     return new Promise(((resolve, reject) => {
-        db.connectToCollection(db.TOPIC_COLLECTION, dbClient => {
+        db.connectToDB(dbClient => {
             return model.findTopics((page - 1)*perPage, perPage, dbClient).then(resolve).catch(reject);
         });
     }));
@@ -18,4 +26,5 @@ function findTopics(page, perPage) {
 module.exports = {
     findQuestionIdsUnderTopic,
     findTopics,
+    findQuestions,
 };
