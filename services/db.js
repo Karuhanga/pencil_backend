@@ -8,7 +8,6 @@ const TOPIC_COLLECTION = "topics";
 function connectToCollection(collectionName, dbCollectionClientConsumer) {
     MongoClient.connect(config.DB_URL, function(err, client) {
         assert.equal(null, err);
-        console.log("Connected successfully to server");
 
         const db = client.db(config.DB_NAME);
         const collection = db.collection(collectionName);
