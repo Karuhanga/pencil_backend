@@ -3,10 +3,7 @@
   "version": "1.0.0",
   "description": "Annotated topic search API.",
   "scripts": {
-    "dev": "pm2 -i 0 --max-restarts 0 start --watch . ./app.js",
-    "start": "pm2 start ./app.js",
-    "logs": "pm2 logs",
-    "stop": "pm2 stop ./app.js",
+    "start": "node -r ./config ./app.js",
     "test": "test"
   },
   "repository": {
@@ -21,7 +18,6 @@
   "homepage": "https://github.com/Karuhanga/pencil_backend#readme",
   "dependencies": {
     "dotenv-safe": "^8.2.0",
-    "express": "^4.17.1",
-    "pm2": "^4.5.1"
+    "express": "^4.17.1"
   }
 }
