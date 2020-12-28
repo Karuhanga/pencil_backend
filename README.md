@@ -5,13 +5,14 @@ Annotated topic search API.
 Live API hosted [here](https://lk-pencil-backend.herokuapp.com).
 
 ## Usage
-- `/topics`- list topics
-- `/questions`- list questions
+- `/topics`- list [topics](https://lk-pencil-backend.herokuapp.com/topics)
+- `/questions`- list [questions](https://lk-pencil-backend.herokuapp.com/questions)
 - `/search`- search questions by annotations, e.g [Questions tagged 'Inheritance'](https://lk-pencil-backend.herokuapp.com/search?q=Inheritance)
 
 ## Todo:
 - Include testing in CI
 - Centralize logging
+- Testing
 
 ## Improvement candidates:
 - Cache load queries
