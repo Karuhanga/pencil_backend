@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "pm2 -i 0 --max-restarts 0 start --watch . ./app.js",
     "start": "pm2 start ./app.js",
+    "logs": "pm2 logs",
     "stop": "pm2 stop ./app.js",
     "test": "test"
   },
