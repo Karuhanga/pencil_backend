@@ -9,7 +9,7 @@ const ANNOTATION_KEYS = ['Annotation 1', 'Annotation 2', 'Annotation 3', 'Annota
 function createQuestion(questionNumber, topics, dbClient){
     console.debug(`Inserting question: ${questionNumber} with topics ${topics.map(topic => topic._id)}...`);
     const questionClient = dbClient.collection(db.QUESTION_COLLECTION);
-    return questionClient.insertOne({questionNumber, topicIds: topics.map(topic => topic._id.toString())});
+    return questionClient.insertOne({questionNumber, topicIds: topics.map(topic => topic._id)});
 }
 
 // could parallelize this if perf sensitive, but this is easier to debug
@@ -24,7 +24,7 @@ async function loadQuestions(questions, annotationKeys, dbClient) {
 function setupQuestionIndices(dbClient) {
     console.debug("Setting up question indices...");
     const questionClient = dbClient.collection(db.QUESTION_COLLECTION);
-    return questionClient.createIndex({questionNumber: 1}, {unique: true})
+    return questionClient.createIndex({questionNumber: 1, topicName: 1}, {unique: true})
 }
 
 db.connectToDB(dbClient => {
