@@ -27,7 +27,7 @@ function findQuestions(offset, limit, dbClient) {
 
 function findQuestionIdsUnderTopic(topicName, offset, limit, dbClient) {
     const indexClient = dbClient.collection(db.INDEX_COLLECTION);
-    return indexClient.find({topicName}).sort( { _id: 1 } ).skip(offset).limit(limit).toArray();
+    return indexClient.find({topicName}, {_id : 1}).sort( { _id: 1 } ).skip(offset).limit(limit).toArray();
 }
 
 module.exports = {
