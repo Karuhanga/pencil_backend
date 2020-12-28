@@ -26,8 +26,8 @@ app.get('/search', function (req, res) {
 
     if (!topic) return res.status(422).json({message: "Missing 'q' query param."});
 
-    controllers.findQuestionIdsUnderTopic(topic, page, perPage)
-        .then(data => res.json({data: data.map(item => item._id), page, perPage}));
+    controllers.findQuestionNumbersUnderTopic(topic, page, perPage)
+        .then(data => res.json({data, page, perPage}));
 });
 
 app.get('*', function(req, res){
