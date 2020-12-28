@@ -9,7 +9,7 @@ Live API hosted [here](https://lk-pencil-backend.herokuapp.com).
 ## Usage
 - `/topics`- list [topics](https://lk-pencil-backend.herokuapp.com/topics)
 - `/questions`- list [questions](https://lk-pencil-backend.herokuapp.com/questions)
-- `/search`- search questions by annotations, e.g [Questions tagged 'Inheritance'](https://lk-pencil-backend.herokuapp.com/search?q=Inheritance)
+- `/search`- search questions by annotations, e.g [Questions tagged 'Biological Molecules'](https://lk-pencil-backend.herokuapp.com/search?q=Biological+Molecules)
 
 ## Todo:
 - Include testing in CI
