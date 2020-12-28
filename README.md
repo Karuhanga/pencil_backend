@@ -2,7 +2,7 @@
 Annotated topic search API.
 
 ## Access
-Live API hosted [here](https://lk-pencil-backend.herokuapp.com).
+Live API hosted [here](https://lk-pencil-backend.herokuapp.com).  
 ** Heads up: I am using heroku's free tier, so the first request needs to wake up the sleeping dyno and will take a second :)
 
 ## Usage
