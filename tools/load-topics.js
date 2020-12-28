@@ -31,6 +31,6 @@ function setupTopicIndices(dbClient) {
     return dbClient.createIndex({topicName: 1}, {unique: true})
 }
 
-db.connectToCollection(db.TOPIC_COLLECTION, (dbClient) => {
+db.connectToCollection(db.TOPIC_COLLECTION, dbClient => {
     return setupTopicIndices(dbClient).then(() => loadTopics(TOPIC_PATHS, TOPIC_LEVELS, dbClient));
 });
