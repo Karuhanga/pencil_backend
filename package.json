@@ -4,6 +4,7 @@
   "description": "Annotated topic search API.",
   "scripts": {
     "start": "node -r ./config ./app.js",
+    "load-topics": "node -r ./config ./tools/load-topics.js",
     "test": "test"
   },
   "repository": {
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/Karuhanga/pencil_backend#readme",
   "dependencies": {
     "dotenv-safe": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongodb": "^3.6.3"
   }
 }
