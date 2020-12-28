@@ -5,6 +5,7 @@ const config = require('../config');
 
 const TOPIC_COLLECTION = "topics";
 const QUESTION_COLLECTION = "questions";
+const INDEX_COLLECTION = "question_topic_index";
 
 function connectToDB(dbClientConsumer) {
     MongoClient.connect(config.DB_URL, function(err, client) {
@@ -20,4 +21,5 @@ module.exports = {
     connectToDB,
     TOPIC_COLLECTION,
     QUESTION_COLLECTION,
+    INDEX_COLLECTION,
 }

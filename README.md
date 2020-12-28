@@ -14,7 +14,7 @@ Live API hosted [here](https://lk-pencil-backend.herokuapp.com).
 - Centralize logging
 
 ## Improvement candidates:
-- Cache load topic queries
+- Cache load queries
 - Topic graph updates(shouldn't be that complicated since we're using a singly linked list)
 - Index updates(most naive implementation would be deleting all question index entries and rebuilding)
 - 

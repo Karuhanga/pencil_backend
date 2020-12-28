@@ -22,12 +22,12 @@ app.get('/questions', function (req, res) {
 app.get('/search', function (req, res) {
     const topic = req.query.q;
     const page = +req.query.page || 1;
-    const perPage = +req.query.perPage || 10;
+    const perPage = +req.query.perPage || 100;
 
     if (!topic) return res.status(422).json({message: "Missing 'q' query param."});
 
     controllers.findQuestionIdsUnderTopic(topic, page, perPage)
-        .then(data => res.json({data, page, perPage}));
+        .then(data => res.json({data: data.map(item => item._id), page, perPage}));
 });
 
 app.get('*', function(req, res){
