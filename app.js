@@ -10,7 +10,7 @@ app.get('/search', function (req, res) {
     const page = req.query.page || 1;
     const perPage = req.query.perPage || 10;
 
-    if (topic) return res.status(422).json({message: "Missing 'q' query param."});
+    if (!topic) return res.status(422).json({message: "Missing 'q' query param."});
 
     findQuestionIdsUnderTopic(topic, page, perPage)
         .then(data => res.json({data, page, perPage}));
