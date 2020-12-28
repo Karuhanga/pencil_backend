@@ -3,25 +3,25 @@ const fs = require('fs');
 const db = require('../services/db');
 
 const TOPIC_PATHS = JSON.parse(fs.readFileSync('./data/topics.json'));
-const TOPIC_LEVELS = ['Topic Level 1', 'Topic Level 2', 'Topic Level 3'];
+const TOPIC_LEVEL_KEYS = ['Topic Level 1', 'Topic Level 2', 'Topic Level 3'];
 
-function getOrCreateTopic(topicName, parentTopic, dbClient) {
+function getOrCreateTopic(topicName, parentTopic, topicClient) {
     console.debug(`Setting up ${topicName} with parent ${parentTopic && parentTopic.value.topicName}...`);
-    return dbClient.findOneAndUpdate(
+    return topicClient.findOneAndUpdate(
         {topicName},
         {$setOnInsert: {topicName, parentTopicId: parentTopic && parentTopic.value._id}},
         {returnOriginal: false, upsert: true,},
     );
 }
 
-async function loadTopics(topicPaths, topicLevels, dbClient) {
+async function loadTopics(topicPaths, topicLevelKeys, topicClient) {
     for (const topicPath of topicPaths) {
         let parentTopic;
-        for (const topicLevel of topicLevels) {
-            const topicName = topicPath[topicLevel];
+        for (const topicLevelKey of topicLevelKeys) {
+            const topicName = topicPath[topicLevelKey];
             if (!topicName) break;
 
-            parentTopic = await getOrCreateTopic(topicName, parentTopic, dbClient);
+            parentTopic = await getOrCreateTopic(topicName, parentTopic, topicClient);
         }
     }
 }
@@ -31,6 +31,7 @@ function setupTopicIndices(dbClient) {
     return dbClient.createIndex({topicName: 1}, {unique: true})
 }
 
-db.connectToCollection(db.TOPIC_COLLECTION, dbClient => {
-    return setupTopicIndices(dbClient).then(() => loadTopics(TOPIC_PATHS, TOPIC_LEVELS, dbClient));
+db.connectToDB(dbClient => {
+    const topicClient = dbClient.collection(db.TOPIC_COLLECTION);
+    return setupTopicIndices(topicClient).then(() => loadTopics(TOPIC_PATHS, TOPIC_LEVEL_KEYS, topicClient));
 });
